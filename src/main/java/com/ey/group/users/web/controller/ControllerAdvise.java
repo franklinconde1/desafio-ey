@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class ControllerAdvise {
 
-    @ExceptionHandler(value = RuntimeException.class)
+    @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorDto> runtimeExceptionHandler(RuntimeException e){
         ErrorDto error = ErrorDto.builder()
                 .mensaje(e.getMessage())
                 .build();
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(value = IllegalArgumentException.class)
+    @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorDto> illegalArgumentExceptionHandler(IllegalArgumentException e){
         ErrorDto error = ErrorDto.builder()
                 .mensaje(e.getMessage())
                 .build();
-        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 }

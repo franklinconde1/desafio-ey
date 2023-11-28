@@ -26,6 +26,13 @@ public class UserController {
         return ResponseEntity.ok(userService.createUser(userDto));
     }
 
+    @PatchMapping("/update")
+    public ResponseEntity<Object> updateUser(@RequestBody UserDto userDto) {
+        log.info("Buscar usuario por email: {}", userDto.getEmail());
+        log.info("Creando usuario: {}", userDto);
+        return ResponseEntity.ok(userService.updateUser(userDto));
+    }
+
     @GetMapping("/all")
     public ResponseEntity<Optional<List<User>>> getAllUser() {
         return ResponseEntity.ok(userService.findAll());

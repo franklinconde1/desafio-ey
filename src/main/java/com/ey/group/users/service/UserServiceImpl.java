@@ -6,10 +6,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface UserServiceImpl {
 
     Optional<User> createUser(UserDto userDto);
+    Optional<User> updateUser(UserDto userDto);
 
     Optional<User> findByEmail(String email);
     Optional<List<User>> findAll();
